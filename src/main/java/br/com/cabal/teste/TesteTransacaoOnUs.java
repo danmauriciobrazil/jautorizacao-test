@@ -13,16 +13,14 @@ public class TesteTransacaoOnUs {
 		@SuppressWarnings("unused")
 		TransacaoDTO dto = null;
 		try {
-			final SrvTransacaoOnlineService srv = (SrvTransacaoOnlineService) ServiceLocatorEJB.getInstance().getEjbObject(
-					"srvConsumidorTransacaoOnline");
+			final SrvTransacaoOnlineService srv = (SrvTransacaoOnlineService) ServiceLocatorEJB.getInstance().getEjbObject("srvConsumidorTransacaoOnline");
 			for (int i = 0; i < 1; i++) {
 				dto = enviarAutorizacao(srv);
-				 //enviarConfirmacao(srv, dto);
-				 //enviarDesfazimento(srv, dto);
+				// enviarConfirmacao(srv, dto);
+				// enviarDesfazimento(srv, dto);
 				// enviarCancelamento(srv);
 			}
-		}
-		catch (final NamingException e) {
+		} catch (final NamingException e) {
 			e.printStackTrace();
 		}
 	}
@@ -50,32 +48,36 @@ public class TesteTransacaoOnUs {
 		// Valor da parcela apenas à vista
 		// Saldo disponível à vista apenas saída
 		// Saldo disponível parcelado apenas saída
-		dto.setCodProcessamento("303000"); // devo validar o range definido no doc?
+		dto.setCodProcessamento("303000"); // devo validar o range definido no
+											// doc?
 		// dto.setTipoParcelado("20"); //não obrigatório
 		// dto.setQtdParcelaString("2"); //não obrigatório
 		// Código de resposta apenas saída
 		// Descrição da resposta apenas saída
-		// dto.setSenha("06BA1B045F5E64E3"); //não obrigatório. 003000 003020 é obrigatório
-		dto.setDadosTransacaoOriginal(null); // não obrigatório, apenas para desfazimento
+		// dto.setSenha("06BA1B045F5E64E3"); //não obrigatório. 003000 003020 é
+		// obrigatório
+		dto.setDadosTransacaoOriginal(null); // não obrigatório, apenas para
+												// desfazimento
 		dto.setModoEntrada("051");
-		dto.setTrilha("5156010000209939=19082019430000000000"); // não obrigatório
+		dto.setTrilha("5156010000209939=19082019430000000000"); // não
+																// obrigatório
 		// dto.setDadosChipCartao("5F2A02098682025800950500000080009A031503189C01009F02060000000037879F03060000000000009F10120010A500030200002E6D00000000000000FF9F1A0200769F2608CF5ADF4C4A14B57D9F2701809F3303E0F8E89F3602023B9F3704B7FD73669F3403410302");
 		// //não obrigatório
 		// dto.setCvv2("793"); //não obrigatório
 		dto.setVencimentoCartao("1908"); // não obrigatório
 		// Dados do Parcelamento (CET) apenas saída
-		//dto.setDadosAdicionais("T420701032109203120"); // não obrigatório
+		// dto.setDadosAdicionais("T420701032109203120"); // não obrigatório
 
 		dto.setImplementacaoMsg(TipoMensagemEnum.TRANSACAO_ON_US);
 		dto = srv.enviarAutorizacao(dto);
-	
+
 		System.out.println("Autorização...");
 		System.out.println("Autid: " + dto.getNroAutid());
 		System.out.println("Código Resposta: " + dto.getCodResposta());
 		System.out.println("Código Resposta Interno: " + dto.getCodRespostaInterno());
-		System.out.println("Saldo de Saque: " +dto.getSaldoSaque());
-		System.out.println("Saldo de Parcelado: " +dto.getSaldoParcelado());
-		System.out.println("Saldo de A vista: " +dto.getSaldoAVista());
+		System.out.println("Saldo de Saque: " + dto.getSaldoSaque());
+		System.out.println("Saldo de Parcelado: " + dto.getSaldoParcelado());
+		System.out.println("Saldo de A vista: " + dto.getSaldoAVista());
 		System.out.println("Descrição: " + dto.getDescricaoResposta());
 
 		return dto;
@@ -153,25 +155,31 @@ public class TesteTransacaoOnUs {
 		// Valor da parcela apenas à vista
 		// Saldo disponível à vista apenas saída
 		// Saldo disponível parcelado apenas saída
-		dto.setCodProcessamento("280000"); // devo validar o range definido no doc?
-//		dto.setTipoParcelado(null); // não obrigatório
-//		dto.setQtdParcela(1); // não obrigatório
-//		// Código de resposta apenas saída
-//		// Descrição da resposta apenas saída
-//		dto.setSenha("06BA1B045F5E64E3"); // não obrigatório. 003000 003020 é obrigatório
-//		dto.setDadosTransacaoOriginal(null); // não obrigatório, apenas para desfazimento
-//		dto.setModoEntrada("051");
-//		dto.setTrilha("5156010000209939=19082019430000000000"); // não obrigatório
-		//dto.setDadosChipCartao("5F2A02098682025800950500000080009A031503189C01009F02060000000037879F03060000000000009F10120010A500030200002E6D00000000000000FF9F1A0200769F2608CF5ADF4C4A14B57D9F2701809F3303E0F8E89F3602023B9F3704B7FD73669F3403410302"); // não
-																																																															// obrigatório
-		//dto.setCvv2("793"); // não obrigatório
-		//dto.setVencimentoCartao("1908"); // não obrigatório
+		dto.setCodProcessamento("280000"); // devo validar o range definido no
+											// doc?
+		// dto.setTipoParcelado(null); // não obrigatório
+		// dto.setQtdParcela(1); // não obrigatório
+		// // Código de resposta apenas saída
+		// // Descrição da resposta apenas saída
+		// dto.setSenha("06BA1B045F5E64E3"); // não obrigatório. 003000 003020 é
+		// obrigatório
+		// dto.setDadosTransacaoOriginal(null); // não obrigatório, apenas para
+		// desfazimento
+		// dto.setModoEntrada("051");
+		// dto.setTrilha("5156010000209939=19082019430000000000"); // não
+		// obrigatório
+		// dto.setDadosChipCartao("5F2A02098682025800950500000080009A031503189C01009F02060000000037879F03060000000000009F10120010A500030200002E6D00000000000000FF9F1A0200769F2608CF5ADF4C4A14B57D9F2701809F3303E0F8E89F3602023B9F3704B7FD73669F3403410302");
+		// // não
+		// obrigatório
+		// dto.setCvv2("793"); // não obrigatório
+		// dto.setVencimentoCartao("1908"); // não obrigatório
 		// Dados do Parcelamento (CET) apenas saída
 		dto.setDadosTransacaoOriginal("010009395309180939540000000111100000000000");
-		//dto.setDadosAdicionais("AAAAAAAAAA"); // não obrigatório
+		// dto.setDadosAdicionais("AAAAAAAAAA"); // não obrigatório
 
 		/*
-		 * dto.setNetWorkData("AAAAAAAAAA"); dto.setInformacoesEstabelecimento("AAAAAAAAAA");
+		 * dto.setNetWorkData("AAAAAAAAAA");
+		 * dto.setInformacoesEstabelecimento("AAAAAAAAAA");
 		 */
 
 		dto.setImplementacaoMsg(TipoMensagemEnum.TRANSACAO_ON_US);

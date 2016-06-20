@@ -15,7 +15,7 @@ public class TesteDadosMonetarios
 		LimitesContaDTO limCtaDTO = new LimitesContaDTO();
 		LimitesDispPortadorDTO limDispPort = new LimitesDispPortadorDTO();
 
-		long cta = 9100001004107l;
+		long cta = 7563099099433l;
 		int componente = 1;
 
 		limCtaDTO = srv.getLimitesConta(cta);
@@ -26,12 +26,12 @@ public class TesteDadosMonetarios
 
 		//limAdi = srv.getLimiteAdicional(cta, componente);
 		
-		limDispPort = srv.getLimitesDisponiveisAdicional(cta, componente);
-		System.out.println("Limite do adicional Portador 3 " + componente + ": " + limDispPort);
-		//System.out.println("Limite do adicional 3 " + componente + ": " + limAdi);
-
-		limDispPort = srv.getLimitesDisponiveisAdicional(cta, componente);
-		System.out.println("portador: 4"+limDispPort.toString());
+//		limDispPort = srv.getLimitesDisponiveisAdicional(cta, componente);
+//		System.out.println("Limite do adicional Portador 3 " + componente + ": " + limDispPort);
+//		//System.out.println("Limite do adicional 3 " + componente + ": " + limAdi);
+//
+//		limDispPort = srv.getLimitesDisponiveisAdicional(cta, componente);
+//		System.out.println("portador: 4"+limDispPort.toString());
 
 	}
 

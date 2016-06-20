@@ -1,10 +1,11 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>jautorizacao-test</groupId>
-  <artifactId>jautorizacao-test</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  
-  	<dependencies>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>jautorizacao-test</groupId>
+	<artifactId>jautorizacao-test</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<dependencies>
 		<dependency>
 			<groupId>org.jboss.jbossas</groupId>
 			<artifactId>jboss-as-client</artifactId>
@@ -14,10 +15,10 @@
 		</dependency>
 
 		<dependency>
-		  <groupId>br.com.cabal</groupId>
-		  <artifactId>jautorizacao-ejb</artifactId>
-		  <version>1.0.61-SNAPSHOT</version>
-		  <classifier>client</classifier>
+			<groupId>br.com.cabal</groupId>
+			<artifactId>jautorizacao-ejb</artifactId>
+			<version>1.0.69-SNAPSHOT</version>
+			<classifier>client</classifier>
 		</dependency>
 
 		<dependency>
@@ -36,8 +37,10 @@
 				<configuration>
 					<source>1.6</source>
 					<target>1.6</target>
+
 				</configuration>
 			</plugin>
+			
 		</plugins>
 	</build>
 </project>

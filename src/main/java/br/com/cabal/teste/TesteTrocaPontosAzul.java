@@ -8,40 +8,39 @@ import br.com.cabal.jautorizacao.enums.TipoMensagemEnum;
 import br.com.cabal.jautorizacao.service.autorizacao.interfaces.SrvTransacaoOnlineService;
 import br.com.cabal.util.ServiceLocatorEJB;
 
-public class TesteTrocaPontosAzul
-{
+public class TesteTrocaPontosAzul {
 
-	public static void main(final String[] args)
-	{
+	public static void main(final String[] args) {
 		@SuppressWarnings("unused")
 		TransacaoDTO dto = null;
-		try
-		{
-			final SrvTransacaoOnlineService srv = (SrvTransacaoOnlineService) ServiceLocatorEJB.getInstance().getEjbObject(
-					"srvConsumidorTransacaoOnline");
-			for (int i = 0; i < 1; i++)
-			{
-				dto = enviarAutorizacao(srv);
-				//enviarConfirmacao(srv, dto);
-				//enviarDesfazimento(srv, dto);
-				 //enviarCancelamento(srv);
+		try {
+			final SrvTransacaoOnlineService srv = (SrvTransacaoOnlineService) ServiceLocatorEJB.getInstance().getEjbObject("srvConsumidorTransacaoOnline");
+			for (int i = 0; i < 1; i++) {
+				// dto = enviarAutorizacao(srv);
+				// enviarConfirmacao(srv, dto);
+				enviarDesfazimento(srv, dto);
+				// enviarCancelamento(srv);
 			}
-		}
-		catch (final NamingException e)
-		{
+		} catch (final NamingException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public static void enviarDesfazimento(final SrvTransacaoOnlineService srv, final TransacaoDTO obj)
-	{
+	public static void enviarDesfazimento(final SrvTransacaoOnlineService srv, final TransacaoDTO obj) {
 		TransacaoDTO dto = new TransacaoDTO();
-		
- 
-		
-		
+
+		// dto.setNroCartao("9995220003574226");
+		// dto.setNsu("13853");
+		// dto.setCodProcessamento("203000");
+		// dto.setDataString("0523");
+		// dto.setHora("154800");
+		// dto.setDtHoraGMT("0523154800");
+		// dto.setCodInstituicao("13485");
+		// dto.setCodResposta("00");
+		// dto.setDadosTransacaoOriginal("010011111112121124270000001348500000000000");
+
 		dto.setNroCartao("9995220003574226");
-		dto.setNroAutid(804880l);
+		dto.setNroAutid(805233l);
 		dto.setCodResposta("00");
 		dto.setCodProcessamento("002072");
 		dto.setValorMe("50");
@@ -60,8 +59,7 @@ public class TesteTrocaPontosAzul
 		System.out.println("Descrição: " + dto.getDescricaoResposta());
 	}
 
-	public static void enviarConfirmacao(final SrvTransacaoOnlineService srv, final TransacaoDTO obj)
-	{
+	public static void enviarConfirmacao(final SrvTransacaoOnlineService srv, final TransacaoDTO obj) {
 		TransacaoDTO dto = new TransacaoDTO();
 		dto.setNroCartao("9995220003574226");
 		dto.setNroAutid(804943l);
@@ -74,24 +72,23 @@ public class TesteTrocaPontosAzul
 		System.out.println("Descrição: " + dto.getDescricaoResposta());
 	}
 
-	public static TransacaoDTO enviarAutorizacao(final SrvTransacaoOnlineService srv)
-	{
+	public static TransacaoDTO enviarAutorizacao(final SrvTransacaoOnlineService srv) {
 		TransacaoDTO dto = new TransacaoDTO();
-	       dto.setNroCartao("9995220003574226");
-	        dto.setValorMe(String.valueOf("0001000000.0"));
-	        dto.setImplementacaoMsg(TipoMensagemEnum.COMPRA_PONTOS_GENERICO);
-	        dto.setCodProcessamento("002075");
-	        dto.setDadosAdicionais("024024Troca de pontos - SMILES");
-	        dto.setComercioExterno("000052100101001");
+		dto.setNroCartao("9995220003574226");
+		dto.setValorMe(String.valueOf("0001000000.0"));
+		dto.setImplementacaoMsg(TipoMensagemEnum.COMPRA_PONTOS_GENERICO);
+		dto.setCodProcessamento("002075");
+		dto.setDadosAdicionais("024024Troca de pontos - SMILES");
+		dto.setComercioExterno("000052100101001");
 
-//			
-//		dto.setNroCartao("9995220003574226");
-//		dto.setCodProcessamento("002072");
-//		dto.setValorMe("10,00");
-//		dto.setComercioExterno("000052100101001");
-//		dto.setNomeLocalComercio("COMPRA DE PONTOS B2W");
-//		dto.setDadosAdicionais("Troca de Pontos - AMERICANAS - Cod.02-509558254");
-//		dto.setImplementacaoMsg(TipoMensagemEnum.COMPRA_PONTOS_GENERICO);
+		//
+		// dto.setNroCartao("9995220003574226");
+		// dto.setCodProcessamento("002072");
+		// dto.setValorMe("10,00");
+		// dto.setComercioExterno("000052100101001");
+		// dto.setNomeLocalComercio("COMPRA DE PONTOS B2W");
+		// dto.setDadosAdicionais("Troca de Pontos - AMERICANAS - Cod.02-509558254");
+		// dto.setImplementacaoMsg(TipoMensagemEnum.COMPRA_PONTOS_GENERICO);
 		dto = srv.enviarAutorizacao(dto);
 		System.out.println("Autorização...");
 		System.out.println("Autid: " + dto.getNroAutid());
@@ -99,11 +96,11 @@ public class TesteTrocaPontosAzul
 		System.out.println("Descrição: " + dto.getDescricaoResposta());
 		return dto;
 	}
-	
-	public static TransacaoDTO enviarCancelamento(SrvTransacaoOnlineService srv){
-		
+
+	public static TransacaoDTO enviarCancelamento(SrvTransacaoOnlineService srv) {
+
 		TransacaoDTO dto = new TransacaoDTO();
-	
+
 		dto.setNroCartao("9995220003574226");
 		dto.setCodProcessamento(CodigoProcessamentoEnum.COMPRA_TROCA_PONTOS_AZUL.getCodProcessamento());
 		dto.setValorMe("10,00");
@@ -118,6 +115,6 @@ public class TesteTrocaPontosAzul
 		System.out.println("Autid: " + dto.getNroAutid());
 		System.out.println("Código Resposta: " + dto.getCodResposta());
 		System.out.println("Descrição: " + dto.getDescricaoResposta());
-		return dto;	
+		return dto;
 	}
 }

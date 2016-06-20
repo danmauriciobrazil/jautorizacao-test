@@ -49,7 +49,7 @@ public class ServiceLocatorEJB {
 
 			
 			properties.put(Context.PROVIDER_URL, "jnp://192.168.5.250:1299");
-//			properties.put(Context.PROVIDER_URL, "jnp://localhost:1099");
+			//properties.put(Context.PROVIDER_URL, "jnp://localhost:1099");
 		
 			this.context = new InitialContext(properties);
 
