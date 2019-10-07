@@ -32,9 +32,8 @@ public class ServiceLocatorEJB {
 				}
 			}
 			return this.context.lookup("jautorizacao-ear/" + name + "/remote");//"jautorizacao-ear/" + name + "/remote");
-//			resetAtcServiceImpl
 		} catch (final Throwable e) {
-			throw new CommunicationException("Objeto remoto indisponível"+ name);
+			throw new CommunicationException("Objeto remoto indisponível: "+ name);
 		}
 	}
 
@@ -48,7 +47,7 @@ public class ServiceLocatorEJB {
 					"org.jboss.naming:org.jnp.interfaces");
 
 			
-			properties.put(Context.PROVIDER_URL, "jnp://192.168.5.250:1299");
+			properties.put(Context.PROVIDER_URL, "jnp://192.168.119.229:1299");
 			//properties.put(Context.PROVIDER_URL, "jnp://localhost:1099");
 		
 			this.context = new InitialContext(properties);
