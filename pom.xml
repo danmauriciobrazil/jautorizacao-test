@@ -15,10 +15,10 @@
 		</dependency>
 
 		<dependency>
-			<groupId>br.com.cabal</groupId>
-			<artifactId>jautorizacao-ejb</artifactId>
-			<version>1.0.71</version>
-			<classifier>client</classifier>
+			 <groupId>br.com.cabal</groupId>
+			  <artifactId>jautorizacao-ejb</artifactId>
+			  <version>1.0.84-RC4</version>
+			  <classifier>client</classifier>
 		</dependency>
 
 		<dependency>
